@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container my-5">
+    <h3> Update Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/clientes/update/{id}(id=${cliente.id})}" th:object="${cliente}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span> 
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="email" class="col-form-label">Edad</label> <input type="text" th:field="*{edad}" class="form-control" id="edad" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="fecha" class="col-form-label">Fecha</label>
+                             <input type="date" th:field="*{fecha}" class="form-control" id="fecha" placeholder="fecha">
+                              <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+
+								<div class="form-group">
+									<label for="grupo">Grupo</label> <select class="form-control"
+										th:field="*{Grupos.idG}">
+										<option th:each="grupo : ${grupos}"
+											th:value="${grupo.idG}" th:text="${grupo.nameG}"></option>
+									</select>
+								</div>
+							</div>                       
+                        <div class="form-group col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Actualizar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

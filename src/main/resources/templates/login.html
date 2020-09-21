@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container"> 
+
+        <div class="card">
+          <div class="card-body">
+            <form th:action="@{/login}" method="post" class="form-signin">
+              <div class="row">
+                <div class="col-md-4"> 
+                </div>  
+                <div class="col-md-4"> 
+                  
+                  <h4 class="h3 mb-3 font-weight-normal">Ingresar</h4>
+                  
+                  <div th:if="${param.error}">
+			      	<span class="text-danger">Usuario / Password incorrectos!</span>
+			      </div>
+			      
+			      
+                  <label for="username" class="sr-only">Username</label>
+                  <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus><br>
+                  <label for="password" class="sr-only">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                </div>
+                <div class="col-md-4"> 
+                </div>
+              </div>   
+            </form>
+          </div>
+        </div>
+</body>
+</html>
