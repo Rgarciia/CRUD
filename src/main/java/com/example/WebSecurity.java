@@ -22,9 +22,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("SELECT username, password, estatus FROM `usuariosp` WHERE username = ?")
-				.authoritiesByUsernameQuery("select u.username, p.perfil from USUARIO_PERFIL up inner join "
-						+ "Usuariosp u on u.id = up.ID_USUARIO inner join roles p on p.id = up.ID_PERFIL where u.username = ? ");
+				.usersByUsernameQuery("SELECT email, password, estatus FROM `usuariosp` WHERE email = ?")
+				.authoritiesByUsernameQuery("select u.email, p.perfil from USUARIO_PERFIL up inner join "
+						+ "Usuariosp u on u.id = up.ID_USUARIO inner join roles p on p.id = up.ID_PERFIL where u.email = ? ");
 	}
 
 	@Override

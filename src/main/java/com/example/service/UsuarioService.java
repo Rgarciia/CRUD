@@ -18,6 +18,12 @@ public class UsuarioService implements IUsuarioService{
 		
 		return usuarioDao.findByUsername(username);
 	}
+	
+	@Override
+	public Usuario findByEmail(String email) {
+		
+		return usuarioDao.findByEmail(email);
+	}
 
 	@Override
 	public Usuario save(Usuario usuario) {

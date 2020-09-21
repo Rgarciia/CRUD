@@ -26,7 +26,9 @@ public class HomeController {
 	@GetMapping("/")
 	public String muestraIndex(Authentication auth, HttpSession session) {
 		
-		String username = auth.getName();
+		String email = auth.getName();
+		
+		System.out.println("email::" + email);
 
 		for (GrantedAuthority rol : auth.getAuthorities()) {
 
@@ -35,7 +37,7 @@ public class HomeController {
 		}
 		if (session.getAttribute("usuario") == null) {
 
-			Usuario usuario = usuarioService.findByUsername(username);
+			Usuario usuario = usuarioService.findByEmail(email);
 			usuario.setPassword(null);
 			System.out.println("usuario ::" +  usuario.toString());
 			

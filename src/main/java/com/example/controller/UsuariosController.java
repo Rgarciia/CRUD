@@ -46,7 +46,7 @@ public class UsuariosController {
     public String addStudent( Usuario usuario,Model model) {
     	String pwdEncriptado = passwordEncoder.encode(usuario.getPassword()); 
     	
-    	usuario.setEmail("aol1@gmail.com");
+    	usuario.setEmail("oscar@gmail.com");
     	usuario.setEstatus(1);
     	usuario.setFechaRegistro(new Date());
     	usuario.setNombre("testing");

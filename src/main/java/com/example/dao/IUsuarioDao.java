@@ -13,5 +13,6 @@ import com.example.entity.Usuario;
 public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	////Consulta por nombre 
 	 Usuario findByUsername(String username);
+	 Usuario findByEmail(String email);
  
 }
