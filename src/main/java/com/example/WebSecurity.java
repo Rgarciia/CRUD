@@ -33,16 +33,19 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				// Los recursos estáticos no requieren autenticación
 				//.antMatchers("/bootstrap/**", "/images/**", "/tinymce/**", "/logos/**").permitAll()
 				// Las vistas públicas no requieren autenticación
-				.antMatchers("/", "/clientes/**")
-				.hasAuthority("Admin")
-				.antMatchers("/usuarios/registro").permitAll()
+				.antMatchers("/", "/clientes/**").permitAll()
+				//.hasAuthority("Admin")
+				
 				// Todas las demás URLs de la Aplicación requieren autenticación
 				.anyRequest().authenticated()
 				// El formulario de Login no requiere autenticacion
 				.and().formLogin().loginPage("/login").permitAll();
+		
+		
+		
 	}
-/*	@Bean
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
-	} */ 
+	} 
 }

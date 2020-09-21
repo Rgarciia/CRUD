@@ -1,4 +1,5 @@
 spring:
+  port : 8082
   datasource:
     url: jdbc:mysql://localhost/practica
     username: root
@@ -6,7 +7,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:

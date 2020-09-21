@@ -1,0 +1,35 @@
+<nav th:fragment="menu-principal" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" th:href="@{/}">Ejemplo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+  
+     <li class="nav-item" sec:authorize="hasAnyAuthority('admin')">
+        <a class="nav-link" th:href="@{/usuarios/registro}">usuarios</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}">Cerrar Session</a>
+      </li>
+      
+       <li class="nav-item">
+     	 
+     	<span th:if ="${session.usuario != null}", class="text-light" th:text ="${session.usuario.username}"></span>
+     	
+      </li>
+      
+    <div sec:authorize="isAuthenticated()">
+	<span class="text-light">Bienvenido</span>&nbsp;<span class="text-light" sec:authentication="name"></span>&nbsp;
+		
+	</div>    
+    </ul>  
+   <!--
+   <a class="btn btn-primary" href="#">Ingresar</a>&nbsp;
+    <a class="btn btn-primary" th:href="@{/signup}">Registrarse</a>&nbsp;
+    <a class="btn btn-primary" th:href="@{/logout}">Salir</a>&nbsp;
+     -->
+    
+  </div>
+</nav>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.dao.IPerfilDao;
 import com.example.entity.Perfil;
 import com.example.entity.Usuario;
 import com.example.service.IUsuarioService;
@@ -29,36 +30,23 @@ public class UsuariosController {
     @Autowired
 	private IUsuarioService usuariosService;
     
-  /*  @Autowired
+    @Autowired
+  	private IPerfilDao perfilDao;
+    
+   @Autowired
     private PasswordEncoder passwordEncoder;
-    */
+    
     @GetMapping("registro")
     public String showSignUpForm(Usuario usuario ,Model model, Authentication auth) {
-   // 	String pwdEncriptado = passwordEncoder.encode("testing"); 
-    	Usuario usuario2 = new Usuario();
-    	usuario2.setEmail("aol@gmail.com");
-    	usuario2.setEstatus(1);
-    	usuario2.setFechaRegistro(new Date());
-    	usuario2.setNombre("testing");
-   // 	usuario2.setPassword(pwdEncriptado);
-    	usuario2.setUsername("testing");
     	
-    	Perfil perfil = new Perfil();
-    	
-    	perfil.setId(1);
-    	
-    	usuario2.agregar(perfil);
-    
-    	//usuariosService.save(usuario2);
- 
-        return "clientes/listaCliente";
+    	        return "formUser";
     }
    
-  /*  @PostMapping("add")
+   @PostMapping("add")
     public String addStudent( Usuario usuario,Model model) {
     	String pwdEncriptado = passwordEncoder.encode(usuario.getPassword()); 
     	
-    	usuario.setEmail("aol3@gmail.com");
+    	usuario.setEmail("aol1@gmail.com");
     	usuario.setEstatus(1);
     	usuario.setFechaRegistro(new Date());
     	usuario.setNombre("testing");
@@ -68,18 +56,18 @@ public class UsuariosController {
     	Perfil perfil = new Perfil();
 		perfil.setId(1);
 		
-		Perfil perfil2 = new Perfil();
+		/*Perfil perfil2 = new Perfil();
 		perfil2.setId(2);
-		
+		*/
 		usuario.agregar(perfil);
-		usuario.agregar(perfil2);
+		//usuario.agregar(perfil2);
 		
 		
     	usuariosService.save(usuario);
        		
-        return "redirect:../students/list";
+        return "redirect:/registro";
     }
-*/
+
     
   
 }
