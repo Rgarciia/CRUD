@@ -12,16 +12,17 @@ import javax.persistence.Table;
 public class Perfil {
 
 	@Id
-	@GeneratedValue
-	private Integer id;
+	private String perfil1;
 	private String perfil;
 
-	public Integer getId() {
-		return id;
+
+
+	public String getPerfil1() {
+		return perfil1;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPerfil1(String perfil1) {
+		this.perfil1 = perfil1;
 	}
 
 	public String getPerfil() {
@@ -32,9 +33,5 @@ public class Perfil {
 		this.perfil = perfil;
 	}
 
-	@Override
-	public String toString() {
-		return "Perfil [id=" + id + ", perfil=" + perfil + "]";
-	}
-
+	
 }

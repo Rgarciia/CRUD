@@ -18,17 +18,17 @@ import com.example.service.IUsuarioService;
 
 
 @Controller
-@RequestMapping("")
+
 public class HomeController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String muestraIndex(Authentication auth, HttpSession session) {
 		
-		String email = auth.getName();
+		String username = auth.getName();
 		
-		System.out.println("email::" + email);
+		System.out.println("email::" + username);
 
 		for (GrantedAuthority rol : auth.getAuthorities()) {
 
@@ -37,7 +37,7 @@ public class HomeController {
 		}
 		if (session.getAttribute("usuario") == null) {
 
-			Usuario usuario = usuarioService.findByEmail(email);
+			Usuario usuario = usuarioService.findByUsername(username);
 			usuario.setPassword(null);
 			System.out.println("usuario ::" +  usuario.toString());
 			
@@ -46,6 +46,11 @@ public class HomeController {
 		}
 		
 		return "index";
+	}
+	
+	@GetMapping("")
+	public String muestraLogin1() {
+		return "redirect: /login";
 	}
 
 	@GetMapping("/login")

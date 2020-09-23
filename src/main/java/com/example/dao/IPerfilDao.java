@@ -11,7 +11,7 @@ import com.example.entity.Cliente;
 import com.example.entity.Perfil;
 import com.example.entity.Usuario;
 
-public interface IPerfilDao extends JpaRepository<Perfil, Integer> {
+public interface IPerfilDao extends JpaRepository<Perfil, String> {
 
  
 }

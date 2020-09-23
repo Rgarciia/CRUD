@@ -2,6 +2,7 @@ package com.example.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 @Table(name = "grupos")
 public class Grupo {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idG;
 	@NotBlank(message = "El nombre no puede ser vacio")
 	@Size(min = 0, max = 10, message = "No entra en el rango")

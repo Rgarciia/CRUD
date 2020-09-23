@@ -54,7 +54,8 @@ public class UsuariosController {
     
     	
     	Perfil perfil = new Perfil();
-		perfil.setId(1);
+		perfil.setPerfil("admin");
+		perfil.setPerfil1("admin");;
 		
 		/*Perfil perfil2 = new Perfil();
 		perfil2.setId(2);

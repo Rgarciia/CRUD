@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.context.annotation.Bean;
 
 @Configuration
@@ -22,9 +24,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("SELECT email, password, estatus FROM `usuariosp` WHERE email = ?")
-				.authoritiesByUsernameQuery("select u.email, p.perfil from USUARIO_PERFIL up inner join "
-						+ "Usuariosp u on u.id = up.ID_USUARIO inner join roles p on p.id = up.ID_PERFIL where u.email = ? ");
+				.usersByUsernameQuery("SELECT username, password, estatus FROM `usuariosp` WHERE username = ?")
+				.authoritiesByUsernameQuery("select u.username, p.perfil from USUARIO_PERFIL up inner join Usuariosp u on u.id = up.ID_USUARIO "
+						+ "inner join roles p on p.perfil = up.perfil1 where u.username = ? ");
 	}
 
 	@Override
@@ -33,13 +35,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				// Los recursos estáticos no requieren autenticación
 				//.antMatchers("/bootstrap/**", "/images/**", "/tinymce/**", "/logos/**").permitAll()
 				// Las vistas públicas no requieren autenticación
-				.antMatchers("/", "/clientes/**").permitAll()
+				.antMatchers("/", "/usuarios/**").permitAll()
 				//.hasAuthority("Admin")
 				
 				// Todas las demás URLs de la Aplicación requieren autenticación
 				.anyRequest().authenticated()
 				// El formulario de Login no requiere autenticacion
-				.and().formLogin().loginPage("/login").permitAll();
+				.and().formLogin().loginPage("/login").defaultSuccessUrl("/index", true).permitAll();
+		
 		
 		
 		
@@ -48,4 +51,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	} 
+	
+	
 }

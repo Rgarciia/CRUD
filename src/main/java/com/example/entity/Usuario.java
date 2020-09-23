@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String username;
 	private String nombre;
@@ -28,14 +28,10 @@ public class Usuario {
 	private Integer estatus;	
 	private Date fechaRegistro;
 	
-	// un usuario puede tenr varios perfiles asociados
-	// eager = carga al momento
-	//joinTable  tabla intermedia  name = tabla
-	//joincolummns = ids fks orden importante
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="UsuarioPerfil",
 			   joinColumns = @JoinColumn(name="idUsuario"),
-			   inverseJoinColumns = @JoinColumn(name="idPerfil")			
+			   inverseJoinColumns = @JoinColumn(name="perfil1")			
 			)
 	private List<Perfil> perfiles;
 	
