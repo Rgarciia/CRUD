@@ -19,9 +19,9 @@ import javax.persistence.Table;
 public class Usuario {
 
 	@Id
+	private String username;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String username;
 	private String nombre;
 	private String email;
 	private String password;
@@ -30,7 +30,7 @@ public class Usuario {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="UsuarioPerfil",
-			   joinColumns = @JoinColumn(name="idUsuario"),
+			   joinColumns = @JoinColumn(name="username"),
 			   inverseJoinColumns = @JoinColumn(name="perfil1")			
 			)
 	private List<Perfil> perfiles;
